@@ -39,3 +39,6 @@ lerna-debug.log*
 
 # Secrets
 .env
+
+# SQLite DB
+prisma/dev.db*

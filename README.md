@@ -2,7 +2,10 @@
 
 An implementation of TodoMVC in Qwik with Qwik City.
 
+This uses Prisma and a very simple schema to connect to a databse storing the Todos.
+
 - [TodoMVC](https://todomvc.com/)
+- [Prisma](https://www.prisma.io/)
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
 - [Qwik GitHub](https://github.com/BuilderIO/qwik)
@@ -18,6 +21,8 @@ This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/over
 Inside your project, you'll see the following directory structure:
 
 ```
+├── prisma/
+│   └── schema.prisma
 ├── public/
 │   └── ...
 └── src/
@@ -26,6 +31,7 @@ Inside your project, you'll see the following directory structure:
     └── routes/
         └── ...
 ```
+- `prisma/schema.prisma`: Provides the DB schema. The database connection is setup in `.env` (see `.env.SAMPLE` for using SQLite). Don't forget to run `pnpm prisma.generate` to generate the client.
 
 - `src/routes`: Provides the directory based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
 
@@ -46,7 +52,7 @@ pnpm qwik add # or `yarn qwik add`
 Development mode uses [Vite's development server](https://vitejs.dev/). During development, the `dev` command will server-side render (SSR) the output.
 
 ```shell
-npm start # or `yarn start`
+pnpm start # or `yarn start`
 ```
 
 > Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
