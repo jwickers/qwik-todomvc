@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "qwik-todomvc",
+  "short_name": "Welcome to Qwik TodoMVC",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A Qwik implementation of TodoMVC."
+}
