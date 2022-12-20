@@ -23,7 +23,7 @@ export const todosLoader = loader$(async ({ query }) => {
       : qf === "active"
       ? { done: false }
       : {};
-  const filter = qf === "completed" ? qf : qf === "active" ? qf : "all";
+  const filter = qf && ["completed", "active"].includes(qf) ? qf : "all";
   const todos = await prisma.todo.findMany({ where });
   return { todos, filter };
 });
@@ -196,17 +196,16 @@ export default component$(() => {
                 }}
               >
                 <div class="view">
-                  <input
-                    class="toggle"
-                    type="checkbox"
-                    checked={todo.done}
-                    onClick$={() => {
-                      markTodo.execute({
-                        id: String(todo.id),
-                        done: todo.done ? "n" : "y",
-                      });
-                    }}
-                  />
+                  <Form action={markTodo}>
+                    <input type="hidden" name="id" value={todo.id} />
+                    <input
+                      type="hidden"
+                      name="done"
+                      value={todo.done ? "n" : "y"}
+                    />
+                    <button class="mark-button" type="submit"></button>
+                  </Form>
+                  <input class="toggle" type="checkbox" checked={todo.done} />
                   <label
                     onDblClick$={() => {
                       editing.value = todo.id;
@@ -214,12 +213,10 @@ export default component$(() => {
                   >
                     {todo.text}
                   </label>
-                  <button
-                    class="destroy"
-                    onClick$={() => {
-                      deleteTodo.execute({ id: String(todo.id) });
-                    }}
-                  ></button>
+                  <Form action={deleteTodo}>
+                    <input type="hidden" name="id" value={todo.id} />
+                    <button class="destroy" type="submit"></button>
+                  </Form>
                 </div>
 
                 {editing.value === todo.id && (
@@ -273,14 +270,11 @@ export default component$(() => {
           </ul>
           {/* <!-- Hidden if no completed items are left ↓ --> */}
           {data.todos.some((t) => t.done) && (
-            <button
-              class="clear-completed"
-              onClick$={() => {
-                clearCompletedTodos.execute({});
-              }}
-            >
-              Clear completed
-            </button>
+            <Form action={clearCompletedTodos}>
+              <button class="clear-completed" type="submit">
+                Clear completed
+              </button>
+            </Form>
           )}
         </footer>
       )}
