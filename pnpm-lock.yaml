@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@builder.io/qwik': file:~/builder.io-qwik-0.16.1-dev20221218081617.tgz
-  '@builder.io/qwik-city': file:~/builder.io-qwik-city-0.1.0-beta0-localdev.tgz
+  '@builder.io/qwik': ^0.16.1
+  '@builder.io/qwik-city': 0.1.0-beta3
   '@prisma/client': ^4.7.1
   '@types/eslint': 8.4.10
   '@types/node': ^18.11.16
@@ -28,8 +28,8 @@ dependencies:
   todomvc-common: 1.0.5
 
 devDependencies:
-  '@builder.io/qwik': file:../../builder.io-qwik-0.16.1-dev20221218081617.tgz
-  '@builder.io/qwik-city': file:../../builder.io-qwik-city-0.1.0-beta0-localdev.tgz_iiaqropxfeymjsaebesxuqnw5i
+  '@builder.io/qwik': 0.16.1
+  '@builder.io/qwik-city': 0.1.0-beta3_@builder.io+qwik@0.16.1
   '@types/eslint': 8.4.10
   '@types/node': 18.11.17
   '@types/node-fetch': 2.6.2
@@ -47,6 +47,28 @@ devDependencies:
   vite-tsconfig-paths: 3.5.0_vite@4.0.1
 
 packages:
+
+  /@builder.io/qwik-city/0.1.0-beta3_@builder.io+qwik@0.16.1:
+    resolution: {integrity: sha512-8/9mv+zbifXtMP+gokgnvQRqiKoG9j3cKz56/gUOYXdL6uw+5X2+h1yFge54EzbFcpHA32N4p1lTu31c1AI7Ow==}
+    peerDependencies:
+      '@builder.io/qwik': '>=0.16.0'
+    dependencies:
+      '@builder.io/qwik': 0.16.1
+      '@mdx-js/mdx': 2.2.1
+      '@types/mdx': 2.0.3
+      source-map: 0.7.4
+      vfile: 5.3.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@builder.io/qwik/0.16.1:
+    resolution: {integrity: sha512-Ksd4v+m9jleCl4ru+aSihuX9/Ck2SWkGqa0EdhkbZdFXcTLYVdWfSrP07TRO/KDFGQbLeoc2+9slco+VzXA4AQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      undici: 5.14.0
+    dev: true
 
   /@cush/relative/1.0.0:
     resolution: {integrity: sha512-RpfLEtTlyIxeNPGKcokS+p3BZII/Q3bYxryFRglh5H3A3T8q9fsLYm72VYAMEOOIBLEa8o93kFLiBDUWKrwXZA==}
@@ -2690,31 +2712,4 @@ packages:
 
   /zwitch/2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
-    dev: true
-
-  file:../../builder.io-qwik-0.16.1-dev20221218081617.tgz:
-    resolution: {integrity: sha512-l2/uEcBuB2s2axmo6FC42XoDrT3acqPvQGWL4c0u9YwHD+Q7KJTGltyytb6axB8gPIGxEUr6NB6ScDTaspUd6A==, tarball: file:../../builder.io-qwik-0.16.1-dev20221218081617.tgz}
-    name: '@builder.io/qwik'
-    version: 0.16.1-dev20221218081617
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      undici: 5.14.0
-    dev: true
-
-  file:../../builder.io-qwik-city-0.1.0-beta0-localdev.tgz_iiaqropxfeymjsaebesxuqnw5i:
-    resolution: {integrity: sha512-Yaf7x21Bn6ZTnk8LeydeGVAhzuVhu4eQBY0mufrGTyS4deM7tKo9R0d+rQIaVl6fYiMUgfUh26X0lAGDQaoMOA==, tarball: file:../../builder.io-qwik-city-0.1.0-beta0-localdev.tgz}
-    id: file:../../builder.io-qwik-city-0.1.0-beta0-localdev.tgz
-    name: '@builder.io/qwik-city'
-    version: 0.1.0-beta0-localdev
-    peerDependencies:
-      '@builder.io/qwik': '>=0.16.0'
-    dependencies:
-      '@builder.io/qwik': file:../../builder.io-qwik-0.16.1-dev20221218081617.tgz
-      '@mdx-js/mdx': 2.2.1
-      '@types/mdx': 2.0.3
-      source-map: 0.7.4
-      vfile: 5.3.6
-    transitivePeerDependencies:
-      - supports-color
     dev: true

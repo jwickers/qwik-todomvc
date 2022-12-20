@@ -25,8 +25,8 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "file:~/builder.io-qwik-0.16.1-dev20221218081617.tgz",
-    "@builder.io/qwik-city": "file:~/builder.io-qwik-city-0.1.0-beta0-localdev.tgz",
+    "@builder.io/qwik": "^0.16.1",
+    "@builder.io/qwik-city": "0.1.0-beta3",
     "@types/eslint": "8.4.10",
     "@types/node": "^18.11.16",
     "@types/node-fetch": "latest",
