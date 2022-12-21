@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@builder.io/qwik': ^0.16.1
-  '@builder.io/qwik-city': 0.1.0-beta3
+  '@builder.io/qwik-city': 0.1.0-beta5
   '@types/eslint': 8.4.10
   '@types/node': ^18.11.16
   '@types/node-fetch': latest
@@ -26,7 +26,7 @@ dependencies:
 
 devDependencies:
   '@builder.io/qwik': 0.16.1
-  '@builder.io/qwik-city': 0.1.0-beta3_@builder.io+qwik@0.16.1
+  '@builder.io/qwik-city': 0.1.0-beta5_@builder.io+qwik@0.16.1
   '@types/eslint': 8.4.10
   '@types/node': 18.11.17
   '@types/node-fetch': 2.6.2
@@ -44,8 +44,8 @@ devDependencies:
 
 packages:
 
-  /@builder.io/qwik-city/0.1.0-beta3_@builder.io+qwik@0.16.1:
-    resolution: {integrity: sha512-8/9mv+zbifXtMP+gokgnvQRqiKoG9j3cKz56/gUOYXdL6uw+5X2+h1yFge54EzbFcpHA32N4p1lTu31c1AI7Ow==}
+  /@builder.io/qwik-city/0.1.0-beta5_@builder.io+qwik@0.16.1:
+    resolution: {integrity: sha512-8jMnQTrn9kT5NR/kciyNFlZ+1qFwWxEQrziCyAFc7Y8FE7rfzwCVjHai1GjpnyZH1Tmge+xx6LCgtUwFqpt6aA==}
     peerDependencies:
       '@builder.io/qwik': '>=0.16.0'
     dependencies:
