@@ -12,19 +12,14 @@ import {
   Link,
   loader$,
 } from "@builder.io/qwik-city";
-import { prisma } from "~/db/prisma";
+import { db } from "~/db/db"
+
 
 export const todosLoader = loader$(async ({ query }) => {
   const qf = query.get("f");
   console.log("todosLoader::", qf);
-  const where =
-    qf === "completed"
-      ? { done: true }
-      : qf === "active"
-      ? { done: false }
-      : {};
   const filter = qf && ["completed", "active"].includes(qf) ? qf : "all";
-  const todos = await prisma.todo.findMany({ where });
+  const todos = db.filter(filter)
   return { todos, filter };
 });
 
@@ -41,10 +36,8 @@ export const editTodoAction = action$(async (formData, { fail }) => {
       message: "Todo text is required",
     });
   }
-  await prisma.todo.update({
-    where: { id: parseInt(id.toString()) },
-    data: { text: text.toString() },
-  });
+  const tid = parseInt(id.toString());
+  db.updateTodo(tid, { text: text.toString() });
 });
 
 export const createTodoAction = action$(async (formData, { fail }) => {
@@ -55,7 +48,7 @@ export const createTodoAction = action$(async (formData, { fail }) => {
       message: "Todo text is required",
     });
   }
-  await prisma.todo.create({ data: { text: text.toString() } });
+  db.createTodo({ text: text.toString() });
 });
 
 export const deleteTodoAction = action$(async (formData, { fail }) => {
@@ -66,7 +59,8 @@ export const deleteTodoAction = action$(async (formData, { fail }) => {
       message: "Todo id is required",
     });
   }
-  await prisma.todo.delete({ where: { id: parseInt(id.toString()) } });
+  const tid = parseInt(id.toString());
+  db.deleteTodo(tid);
 });
 
 export const markTodoAction = action$(async (formData, { fail }) => {
@@ -83,10 +77,8 @@ export const markTodoAction = action$(async (formData, { fail }) => {
       message: "Todo new done value is required and must be 'y' or 'n'",
     });
   }
-  await prisma.todo.update({
-    where: { id: parseInt(id.toString()) },
-    data: { done: done.toString() === "y" },
-  });
+  const tid = parseInt(id.toString());
+  db.updateTodo(tid, { done: done.toString() === "y" });
 });
 
 export const markAllTodosAction = action$(async (formData) => {
@@ -96,18 +88,15 @@ export const markAllTodosAction = action$(async (formData) => {
   if (done && done.toString() === "n") {
     flag = false;
   }
-  await prisma.todo.updateMany({
-    where: { done: !flag },
-    data: { done: flag },
-  });
-  return { nextToggle: flag ? "active" : "completed" };
+  db.updateMany(
+    (t) => !t.done,
+    (t) => { return {...t, done: flag} },
+  );
 });
 
 export const clearCompletedTodosAction = action$(async () => {
   console.log("clearCompletedTodosAction::");
-  await prisma.todo.deleteMany({
-    where: { done: true },
-  });
+  db.deleteMany((t) => !!t.done);
 });
 
 export default component$(() => {
