@@ -2,7 +2,7 @@
   "name": "qwik-todomvc",
   "description": "A Qwik implementation of TodoMVC",
   "engines": {
-    "node": ">=15.0.0"
+    "node": ">=18.0.0"
   },
   "private": true,
   "scripts": {
